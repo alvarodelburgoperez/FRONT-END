@@ -1,6 +1,28 @@
 {
+  "name": "tu-aplicacion",
+  "version": "1.0.0",
+  "description": "Una breve descripción de tu aplicación",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "build": "cd client && npm install && npm run build",
+    "postinstall": "npm run build"  
+  },
+  "engines": {
+    "node": "18.x"  
+  },
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.0"
   }
+  },
+  "keywords": [
+    "node",
+    "react",
+    "heroku"
+  ],
+  "author": "Alvaro",
+  "license": "ISC"
 }
+
+
