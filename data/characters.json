@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Jack Sparrow",
+    "energyLevel": "100",
+    "lifeExpectancy": "100",
+    "type": "pirate",
+    "foodLevel": 80,
+    "drinkLevel": 90,
+    "healthLevel": 100,
+    "restLevel": "100"
+  },
+  {
+    "id": 2,
+    "name": "Perico",
+    "energyLevel": "100",
+    "lifeExpectancy": "70",
+    "type": "parrot",
+    "foodLevel": "100",
+    "drinkLevel": "100",
+    "flyLevel": "100",
+    "healthLevel": 100,
+    "restLevel": "100",
+    "jumpLevel": 100
+  },
+  {
+    "id": 3,
+    "name": "Jack el mono",
+    "energyLevel": "100",
+    "lifeExpectancy": "70",
+    "type": "monkey",
+    "foodLevel": "100",
+    "drinkLevel": "100",
+    "jumpLevel": "100",
+    "healthLevel": 100,
+    "restLevel": "100"
+  }
+]

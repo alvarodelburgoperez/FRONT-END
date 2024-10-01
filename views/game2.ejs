@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pirates of the Ucjcean - Inicio</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: grid;
+                grid-template-rows: auto auto auto;
+                min-height: 100vh;
+                font-family: 'Press Start 2P', cursive;
+                background-color: #87CEEB;
+                color: black;
+            }
+
+
+            header {
+                padding: 20px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 3em;
+                color: #ffd700; /* Color dorado pirata */
+                text-shadow: 2px 2px #000;
+                margin: 0;
+                text-align: center;
+            }
+            h2{
+                color: white; 
+                font-size: 2.5em;
+                text-align: center;
+            }
+
+            nav {
+                margin: 20px 0;
+                text-align: center;
+
+            }
+
+            nav a {
+                margin: 15px 0;
+                padding: 10px 20px;
+                background-color: #8b4513; /* Marrón tipo madera */
+                color: #fff;
+                border: none;
+                text-decoration: none;
+                font-size: 1.2em;
+                text-transform: uppercase;
+                box-shadow: 3px 3px #000;
+                border-radius: 5px;
+            }
+
+            nav a:hover {
+                background-color: #d2691e; /* Marrón más claro */
+                color: #ffd700; /* Texto dorado */
+            }
+
+            ul > li{
+                margin-bottom: 30px;
+            }
+
+            form{
+                text-align: center;
+                margin-bottom: 5rem;
+            }
+
+            .create-title{
+                font-size: 2em;
+                color: #ffd700; /* Color dorado pirata */
+                text-shadow: 2px 2px #000;
+                margin: 0;
+                text-align: center;
+                margin-top: 5rem;
+            }
+
+            #characterSpecificFields > input, select, select > option {
+                border-radius: 6px;
+                font-family: 'Press Start 2P', cursive;
+                padding: 6px;
+                border: none;
+            }
+            #characterSpecificFields > input{
+                margin-top: 20px;
+                border: none;
+                
+            }
+            input[type="number"]:focus {
+                border: none;
+                border-color: #2e2b27; 
+                background-color: #f0f8ff;
+            }
+
+            .button-actions{
+                margin-top: 20px;
+                margin: 15px 0;
+                padding: 10px 20px;
+                background-color: white;
+                color: #000000;
+                border: none;
+                text-decoration: none;
+                text-transform: uppercase;
+                box-shadow: 3px 3px #000;
+                border-radius: 5px;
+            }
+
+            .button-actions:hover {
+                background-color: #d2691e;
+                color: #ffd700;
+            }
+
+            .main-game2{
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: auto auto;
+                flex-direction: column;
+                align-items: center;
+
+            }
+
+            .titleDiv{
+                grid-column: 1/3;
+            }
+
+            .buttons-character{
+                display: flex;
+                grid-row: 2;
+                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+ 
+            .statisticsDiv{
+                grid-column: 2;
+            }
+            .image{
+                width: 200px;
+                height: 200px;
+            }
+
+
+
+
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                background-color: #2e2b27;
+                color: #fff;
+                width: 100%;
+            }
+         
+        </style>
+    </head>
+    <body>
+     
+            <header>
+                <h1>Pirates of the Ucjcean</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/game2"><button class="nav-button">Inicio</button></a></li>
+                        <li><a href="/game2/select"><button class="nav-button">Cambiar personaje</button></a></li>
+                        <li><a href="/characters"><button class="nav-button">Gestión de Personajes</button></a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <main class="main-game2">
+        
+                    
+                <% if (character) { %>
+                    <div class="titleDiv">
+                        <h1>Juego del Piratochi</h1>
+                        <h2>Personaje: <%= character.name %></h2>
+                    </div>
+                    
+                    
+
+                    <% if (character.type === 'pirate') { %>
+                        
+                        <div class="statisticsDiv">
+                            <p id="foodLevel">Nivel de comida: <%= character.foodLevel %> 🍗</p>
+                            <p id="drinkLevel">Nivel de bebida: <%= character.drinkLevel %> 💧</p>
+                            <p id="energyLevel">Nivel de Energía: <%= character.energyLevel %> ⚡</p>
+                            <p id="healthLevel">Nivel de Salud: <%= character.healthLevel %> ❤️</p>
+                        </div>
+                        <div class="buttons-character">
+                            <img id="characterImage" src="/assets/pirata.png" alt="Pirata" class="image">
+                            <div>
+                                <button class="button-actions" onclick="updateEnergy('eat')">Comer 🍔</button>
+                                <button class="button-actions" onclick="updateEnergy('drink')">Beber Ron 🍾</button>
+                                <button class="button-actions" onclick="updateEnergy('play')">Navegar ⛵</button> 
+                                <button class="button-actions" onclick="updateEnergy('rest')">Descansar 😴</button>   
+                            </div>
+                            
+                        </div>
+
+                    <% } else if (character.type === 'parrot') { %>
+
+                        <div class="statisticsDiv">
+                            <p id="foodLevel">Nivel de comida: <%= character.foodLevel %> 🌿</p>
+                            <p id="drinkLevel">Nivel de bebida: <%= character.drinkLevel %> 💧</p>
+                            <p id="energyLevel">Nivel de Energía: <%= character.energyLevel %> ⚡</p>
+                            <p id="flyLevel">Vuelo: <%= character.flyLevel %> 🐦</p>
+                            <p id="healthLevel">Nivel de Salud: <%= character.healthLevel %> ❤️</p>
+                        </div>
+                        <div class="buttons-character">
+                            <img id="characterImage2" src="/assets/parrot.png" alt="Loro" class="image">
+                            <div>
+                                <button class="button-actions" onclick="updateEnergy('eat')">Comer 🌿</button>
+                                <button class="button-actions" onclick="updateEnergy('drink')">Beber 💧</button>
+                                <button class="button-actions" onclick="updateEnergy('fly')">Volar 🐦</button> 
+                                <button class="button-actions" onclick="updateEnergy('rest2')">Descansar 🪹</button>   
+                            </div>
+                            
+                        </div>
+
+                        <% } else if (character.type === 'monkey') { %>
+
+                        <div class="statisticsDiv">
+                            <p id="foodLevel">Nivel de comida: <%= character.foodLevel %> 🍌</p>
+                            <p id="drinkLevel">Nivel de bebida: <%= character.drinkLevel %> 💧</p>
+                            <p id="energyLevel">Nivel de Energía: <%= character.energyLevel %> ⚡</p>
+                            <p id="jumpLevel">Salto: <%= character.jumpLevel %> 🦘</p>
+                            <p id="healthLevel">Nivel de Salud: <%= character.healthLevel %> ❤️</p>
+                        </div>
+                        <div class="buttons-character">
+                            <img id="characterImage2" src="/assets/parrot.png" alt="Loro" class="image">
+                            <div>
+                                <button class="button-actions" onclick="updateEnergy('eat')">Comer 🍌</button>
+                                <button class="button-actions" onclick="updateEnergy('drink')">Beber 💧</button>
+                                <button class="button-actions" onclick="updateEnergy('jump')">Saltar 🦘</button> 
+                                <button class="button-actions" onclick="updateEnergy('rest3')">Descansar 🌴</button>   
+                            </div>      
+                        </div> 
+        
+                        <% } %>
+
+
+                    <script>
+                        let currentCharacter = '<%= character.type %>';
+                        const originalImageSrc = currentCharacter === 'pirate' ? '/assets/pirata.png' : '/assets/parrot.png';
+                        let drunkImageSrc = '/assets/pirate-drink.png';
+                        let navegar_imagen = '/assets/barco.png';
+
+                        setInterval(function() {
+                            // Llamar a updateEnergy con la acción 'decreaseFood'
+                            updateEnergy('decreaseFood');
+                      
+                        }, 10000);
+
+                        setInterval(function() {
+                            // Llamar a updateEnergy con la acción 'decreaseFood'
+                            updateEnergy('decreaseDrink');
+                      
+                        }, 20000);
+                
+                        function updateEnergy(action) {
+                            
+                            fetch('/game2/update', {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ action: action })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (action === 'decreaseFood') {
+                                    document.getElementById('foodLevel').innerText = 'Nivel de comida: ' + data.foodLevel + ' 🍗';
+                                }
+                                if (action === 'eat'){
+                                    document.getElementById('foodLevel').innerText = 'Nivel de comida: ' + data.foodLevel + ' 🍗';
+                                }
+                                if (action === 'play'){
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                }
+                                if (action === 'fly'){
+                                    document.getElementById('flyLevel').innerText = 'Vuelo: ' + data.flyLevel + ' 🐦';
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                }
+                                if (action === 'jump'){
+                                    document.getElementById('jumpLevel').innerText = 'Salto: ' + data.jumpLevel + ' 🦘';
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                }
+                                if (action === 'decreaseDrink') {
+                                    document.getElementById('drinkLevel').innerText = 'Nivel de bebida: ' + data.drinkLevel + ' 💧';
+                                }
+                                if (action === 'drink'){
+                                    document.getElementById('drinkLevel').innerText = 'Nivel de bebida: ' + data.drinkLevel + ' 💧';
+                                }
+                                if (action === 'rest' ){
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                }
+                                if (action === 'rest2' ){
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                    document.getElementById('flyLevel').innerText = 'Vuelo: ' + data.flyLevel + ' 🐦';
+                                }
+                                if (action === 'rest3' ){
+                                    document.getElementById('energyLevel').innerText = 'Nivel de energía: ' + data.energyLevel + ' ⚡';
+                                    document.getElementById('jumpLevel').innerText = 'Salto: ' + data.jumpLevel + ' 🦘';
+                                }
+                                else{
+                                    document.getElementById('healthLevel').innerText = 'Nivel de salud: ' + data.healthLevel + '❤️';
+                                }
+
+                                if (currentCharacter === 'pirate') {
+                                    // Cambiar la imagen si la acción es beber ron
+                                    if (action === 'drink' && data.energyLevel < 100) {
+                                        const img = document.getElementById('characterImage');
+                                        img.src = drunkImageSrc; // Cambiar a la imagen de borracho
+                                        setTimeout(() => {
+                                            img.src = originalImageSrc; // Volver a la imagen original después de un tiempo
+                                        }, 200); // Cambiar de vuelta después de 2 segundos
+                                    }
+                                    if (action === 'play') {
+                                        const img = document.getElementById('characterImage');
+                                        img.src = navegar_imagen; // Cambiar a la imagen de borracho
+                                        setTimeout(() => {
+                                            img.src = originalImageSrc; // Volver a la imagen original después de un tiempo
+                                        }, 200); // Cambiar de vuelta después de 2 segundos
+                                    }
+                                }
+                                else if (currentCharacter === 'Loro') {
+                                    
+                                    if (action === 'feed' && data.energyLevel < 100) {
+                                        const img = document.getElementById('characterImage2');
+                                        img.src = seedImageSrc; // Cambiar a la imagen de loro comiendo
+                                        setTimeout(() => {
+                                            img.src = originalImageSrc; // Volver a la imagen original después de un tiempo
+                                        }, 200); // Cambiar de vuelta después de 2 segundos
+                                    } 
+                                    if (action === 'play') {
+                                        const img = document.getElementById('characterImage2');
+                                        img.src = navegar_imagen; 
+                                        setTimeout(() => {
+                                            img.src = originalImageSrc; 
+                                        }, 200);
+                                    }
+                                }
+                
+                            })
+                            .catch(error => console.error('Error al actualizar:', error));
+                        }
+                    </script>
+                <% } else { %>
+                    <p>No hay ningún personaje seleccionado.</p>
+                    <a href="/characters">Seleccionar Personaje</a>
+                <% } %>
+
+            </main>
+
+            <footer>
+                <p>&copy; Pirates of the Ucjcean 2024</p>
+            </footer>
+        
+    </body>
+</html>
+
+
