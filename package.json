@@ -4,7 +4,7 @@
   "description": "Una aplicación desplegada en Render",
   "main": "public/index.js", 
   "scripts": {
-    "start": "node public/index.js" 
+    "start": "node app.js" 
   },
   "dependencies": {
     "ejs": "^3.1.10",
