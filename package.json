@@ -2,7 +2,7 @@
   "name": "mi-aplicacion",
   "version": "1.0.0",
   "description": "Una aplicación desplegada en Render",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node index.js"
   },
