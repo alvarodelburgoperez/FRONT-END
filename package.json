@@ -2,9 +2,9 @@
   "name": "mi-aplicacion",
   "version": "1.0.0",
   "description": "Una aplicación desplegada en Render",
-  "main": "public/index.js",  // Cambia la ruta aquí
+  "main": "public/index.js", 
   "scripts": {
-    "start": "node public/index.js"  // Asegúrate de que el script de inicio apunte a la ruta correcta
+    "start": "node public/index.js" 
   },
   "dependencies": {
     "ejs": "^3.1.10",
