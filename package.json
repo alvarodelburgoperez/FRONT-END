@@ -4,9 +4,7 @@
   "description": "Una breve descripción de tu aplicación",
   "main": "server/app.js",
   "scripts": {
-    "start": "node server/app.js",
-    "build": "cd client && npm install && npm run build",
-    "postinstall": "npm run build"  
+    "start": "node server/app.js" 
   },
   "engines": {
     "node": "18.x"  
